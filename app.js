@@ -1,8 +1,9 @@
+//
+// single-step selection: 10^40 chance
+// cumulative selection: as little as 43 generations
+//
 (function() {
   "use strict";
-
-  var program1 = new Program();
-  program1.run();
 
   var Program = function() {
   
@@ -25,7 +26,7 @@
       this.init();
       
       while(this.bestScore != 28) {
-        for(var i=0; i<10; i++) {
+        for(var i=0; i<100; i++) {
           var tmpCopy = this.copy(this.bestCopy);
           var tmpScore = this.score(tmpCopy);
           
@@ -56,7 +57,7 @@
       var self = this,
           random = Math.floor(Math.random() * Math.floor(100));
       
-      if(random < self.probabilty) {
+      if(random < self.probability) {
         letter = self.randomCharacter();
       }
       
@@ -97,4 +98,7 @@
       return letters[Math.floor(Math.random() * Math.floor(letters.length))];
     }
   };
+
+  var program1 = new Program();
+  program1.run();
 })();
